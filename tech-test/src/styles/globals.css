@@ -101,9 +101,11 @@ a {
 }
 
 .logo {
-  height: 32px;
-  margin: 16px;
-  background: rgba(255, 255, 255, 0.3);
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #192a56;
 }
 
 .site-layout .site-layout-background {
