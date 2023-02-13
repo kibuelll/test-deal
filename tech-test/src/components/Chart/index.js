@@ -1,9 +1,32 @@
-import {Button,Typography} from 'antd'
+import { Button, Typography } from "antd";
 import { PieChart, Pie, Cell } from "recharts";
-const {Title} = Typography
+const { Title } = Typography;
 
+const Chart = ({ products, setCharted }) => {
+  let brand = {};
+  products.forEach((el) => {
+    if (!brand[el.brand]) {
+      brand[el.brand] = 0;
+    }
 
-const Chart = ({products,setCharted}) => {
+    brand[el.brand] += el.stock;
+  });
+
+  let data = [];
+  let id = 0;
+  for (const key in brand) {
+    id += 1;
+    data.push({ name: key, stock: brand[key], id: id });
+  }
+
+  // const data = products.map((el) => {
+  //   return {
+  //     id: el.id,
+  //     name: el.title,
+  //     stock: el.stock,
+  //   };
+  // });
+
   function getRandomColor() {
     var letters = "0123456789ABCDEF";
     var color = "#";
@@ -14,7 +37,7 @@ const Chart = ({products,setCharted}) => {
   }
 
   const colors = [];
-  products.forEach(() => {
+  data.forEach(() => {
     colors.push(getRandomColor());
   });
 
@@ -44,14 +67,6 @@ const Chart = ({products,setCharted}) => {
     );
   };
 
-  const data = products.map((el) => {
-    return {
-      id: el.id,
-      name: el.title,
-      stock: el.stock,
-    };
-  });
-
   return (
     <section style={{ display: "flex" }}>
       <div
@@ -61,7 +76,9 @@ const Chart = ({products,setCharted}) => {
           alignItems: "center",
         }}
       >
-        <Title level={2} style={{margin:0}}> Products Charts </Title>
+        <Title level={2} style={{ margin: 0 }}>
+          Products Charts
+        </Title>
         <PieChart width={700} height={700}>
           <Pie
             data={data}
@@ -84,7 +101,7 @@ const Chart = ({products,setCharted}) => {
           </Pie>
         </PieChart>
       </div>
-      <div style={{marginLeft: "2em" }}>
+      <div style={{ marginLeft: "2em" }}>
         <Button
           style={{
             width: "15rem",
@@ -100,7 +117,7 @@ const Chart = ({products,setCharted}) => {
           "Back to table"
         </Button>
         <p style={{ marginBottom: "1em", fontWeight: "700" }}>
-          Click on product list bellow, focus will be shown on black color
+          Click on brand list bellow, focus will be shown on black color
           chart!!
         </p>
         <ul style={{ columns: 2, WebkitColumns: 2 }}>
@@ -135,4 +152,4 @@ const Chart = ({products,setCharted}) => {
   );
 };
 
-export default Chart
+export default Chart;
