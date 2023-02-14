@@ -21,7 +21,6 @@ const TableProduct = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         setLoading(false);
         setProducts(data.products);
       })

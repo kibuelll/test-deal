@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table, Layout, Button, Typography ,Skeleton} from "antd";
+import { Table, Button, Typography ,Skeleton} from "antd";
 import Link from "next/link";
 const { Text } = Typography;
 

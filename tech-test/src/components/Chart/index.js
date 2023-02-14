@@ -1,5 +1,6 @@
 import { Button, Typography } from "antd";
 import { PieChart, Pie, Cell } from "recharts";
+import styles from './index.module.css'
 const { Title } = Typography;
 
 const Chart = ({ products, setCharted }) => {
