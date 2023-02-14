@@ -115,7 +115,7 @@ const Chart = ({ products, setCharted }) => {
             setCharted(false);
           }}
         >
-          "Back to table"
+          Back to table
         </Button>
         <p style={{ marginBottom: "1em", fontWeight: "700" }}>
           Click on brand list bellow, focus will be shown on black color
@@ -125,6 +125,7 @@ const Chart = ({ products, setCharted }) => {
           {data.map((el, index) => {
             return (
               <li
+              key={index}
                 id={`list-${index}`}
                 style={{
                   textDecoration: "none",
