@@ -1,6 +1,6 @@
 import { Table, Typography, Input, Button,Skeleton } from "antd";
 import { useEffect, useState } from "react";
-import Chart from "@/components/Chart";
+import Chart from "../../components/Chart";
 const { Text } = Typography;
 
 const TableProduct = () => {
