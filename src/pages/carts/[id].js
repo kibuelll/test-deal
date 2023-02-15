@@ -1,5 +1,6 @@
-import {ArrowLeftOutlined,ArrowRightOutlined} from '@ant-design/icons'
+import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons";
 import { Row, Col, Table, Typography, Skeleton, Button } from "antd";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 const { Text } = Typography;
@@ -8,7 +9,6 @@ const DetailCart = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [detail, setDetail] = useState({});
-
 
   useEffect(() => {
     fetch(`https://dummyjson.com/carts/${router.query.id}`, {
@@ -21,7 +21,7 @@ const DetailCart = () => {
         return response.json();
       })
       .then((data) => {
-        setLoading(false)
+        setLoading(false);
         setDetail(data);
       })
       .catch((err) => console.log(err));
@@ -69,10 +69,16 @@ const DetailCart = () => {
       {!loading ? (
         <>
           <div style={{ display: "flex", alignItems: "center" }}>
-            <Button onClick={() => {
-              router.push(`/carts/${+router.query.id -1}`)
-            }} disabled={+router.query.id == 1}>
-              <ArrowLeftOutlined style={{fontSize:'1.5rem'}}/>
+            <Button
+              onClick={() => {
+                router.push(`/carts/${+router.query.id - 1}`);
+              }}
+              disabled={+router.query.id == 1}
+            >
+              <ArrowLeftOutlined style={{ fontSize: "1.5rem" }} />
+            </Button>
+            <Button style={{ width: '5rem', height: "3rem",marginLeft:'1em',backgroundColor:'#487eb0',color:'white' }}>
+              <Link href={"/carts"}>Carts</Link>
             </Button>
             <h1
               style={{
@@ -87,7 +93,7 @@ const DetailCart = () => {
             <div
               style={{
                 marginLeft: "3em",
-                marginRight:'auto',
+                marginRight: "auto",
                 backgroundColor: "#487eb0",
                 marginBottom: "1.5em",
                 height: "5rem",
@@ -117,12 +123,13 @@ const DetailCart = () => {
                 </Col>
               </Row>
             </div>
-            <Button onClick={() => {
-              router.push(`/carts/${+router.query.id +1}`)
-            }}
+            <Button
+              onClick={() => {
+                router.push(`/carts/${+router.query.id + 1}`);
+              }}
               disabled={+router.query.id == 20}
             >
-              <ArrowRightOutlined style={{fontSize:'1.5rem'}}/>
+              <ArrowRightOutlined style={{ fontSize: "1.5rem" }} />
             </Button>
           </div>
           <Table

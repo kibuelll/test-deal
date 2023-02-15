@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./src/pages/index.js",
     "paths": {
       "@/*": ["./src/*"]
     }
